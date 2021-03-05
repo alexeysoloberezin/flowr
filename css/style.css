@@ -129,6 +129,7 @@ h2 {
     position: absolute;
     top: 8px;
     left: 10px;
+    opacity: 0.4;
 }
 
 #question label {
@@ -148,17 +149,20 @@ h2 {
     margin: 130px auto 0px;
     font-size: 24px;
     text-indent: 0;
-    
+
 }
-.active-end   .subtitle{
+
+.active-end .subtitle {
     position: absolute;
     top: 380px;
     left: 50%;
     transform: translateX(-50%);
 }
-.active-end  .image{
+
+.active-end .image {
     height: 350px;
 }
+
 #quiz {
     text-indent: 10px;
     text-align: center;
