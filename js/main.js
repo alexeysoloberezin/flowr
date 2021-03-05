@@ -20,6 +20,7 @@
   var quiz = $('#quiz'); //Quiz div object
   var title = document.querySelector('.title') ;
   var subtitle = document.querySelector('.subtitle') ;
+  var quizWrapper = document.querySelector('.quiz__wrapper') ;
   
 
   var image1 = document.createElement("img");
@@ -140,13 +141,12 @@
       id: 'question'
     });
     
-    var header = $('<h2>Вопрос ' + (index + 1) + ':</h2>');
-    qElement.append(header);
+    
   
   
     qElement.append(images[index].image);
 
-    var question = $('<p>').append(questions[index].question);
+    var question = $('<h2>').append(questions[index].question);
     qElement.append(question);
     
     var radioButtons = createRadios(index);
@@ -157,15 +157,24 @@
   
   // Creates a list of the answer choices as radio inputs
   function createRadios(index) {
-    var radioList = $('<ul>');
+    
     var item;
+    var radioList = $('<ul>');    
     var input = '';
     for (var i = 0; i < questions[index].choices.length; i++) {
+      
       item = $('<li>');
+      
+      
       input = '<input type="radio" name="answer" value=' + i + ' />';
+     
       input += questions[index].choices[i];
       item.append(input);
+      var label = document.createElement("label");
+      label.name = "answer";
+      item.append(label) 
       radioList.append(item);
+
     }
     return radioList;
   }
@@ -198,11 +207,12 @@
       }else {
         var scoreElem = displayScore();
         var scoreElem2 = displayScore2();
-        quiz.append(scoreElem).fadeIn();
         quiz.append(scoreElem2).fadeIn();
+        quiz.append(scoreElem).fadeIn();      
         title.classList.add('active');
         title.classList.add('active-end');
         subtitle.textContent = "Результат";
+        quizWrapper.classList.add('active-end');
         $('#next').hide();
         $('#prev').hide();
         $('#start').show();
